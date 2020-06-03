@@ -31,47 +31,27 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned markup to the DOM.
 */
-{/* <div class="menu">
-<ul>
-  {each menu item as a list item}
-</ul>
-</div> */}
-const menButton = document.querySelector('.header');
+
+// Selector
+const menuButton = document.querySelector('.header');
 
 function menuMaker(menuArray){
   // Elements
   const menu = document.createElement('div');
   const list = document.createElement('ul');
- 
-  const listItem = document.createElement('li');
-  const listItem1 = document.createElement('li');
-  const listItem2 = document.createElement('li');
-  const listItem3 = document.createElement('li');
-  const listItem4 = document.createElement('li');
-  const listItem5 = document.createElement('li');
-
   // Structure
   menu.appendChild(list);
-  list.appendChild(listItem);
-  list.appendChild(listItem1);
+  // List Items
+    for(let i = 0; i<menuArray.length; i++){
+      let listItem = document.createElement('li');
+      listItem.textContent = menuArray[i];
+      list.appendChild(listItem);
 
-  list.appendChild(listItem2);
-
-  list.appendChild(listItem3);
-
-  list.appendChild(listItem4);
-
-  list.appendChild(listItem5);
-
+}
+// Style
   menu.classList.add('menu');
 
-  listItem.textContent = menuArray[0];
-  listItem1.textContent = menuArray[1];
-  listItem2.textContent = menuArray[2];
-  listItem3.textContent = menuArray[3];
-  listItem4.textContent = menuArray[4];
-  listItem5.textContent = menuArray[5];
- 
+//  Hamburger event listener
   var hamburger = document.querySelector('.menu-button');
   hamburger.addEventListener('click', function(e){
     menu.classList.toggle('menu--open')
@@ -79,7 +59,8 @@ function menuMaker(menuArray){
   return menu
 
 }
-let menu = menuMaker(menuItems);
-console.log(menu);
-menButton.appendChild(menu)
+
+// Function with Append
+let menu = menuMaker(menuItems);;
+menuButton.appendChild(menu)
 
