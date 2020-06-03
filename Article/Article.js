@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'My new title',
+    date: 'today',
+    firstParagraph: 'The first of many',
+    secondParagraph: 'The second of few',
+    thirdParagraph: 'last one!!!'
   }
 ];
 
@@ -111,3 +118,50 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+const articles = document.querySelector('.articles')
+function articleMaker(newsDataObj){
+  // Elements
+  const article = document.createElement('div');
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
+  const first = document.createElement('p');
+  const second = document.createElement('p');
+  const third = document.createElement('p');
+  const button = document.createElement('span')
+
+  // Structure
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(first);
+  article.appendChild(second);
+  article.appendChild(third);
+  article.appendChild(button);
+
+  // Classes
+  article.classList.add('article')
+  date.classList.add('date')
+  button.classList.add('expandButton')
+
+
+  title.textContent = newsDataObj.title
+  first.textContent = newsDataObj.firstParagraph;
+  second.textContent = newsDataObj.secondParagraph;
+  third.textContent = newsDataObj.thirdParagraph;
+  button.textContent = 'expand';
+
+  // Listener
+  button.addEventListener('click', function(e){
+    article.classList.toggle('article-open');
+  });
+  
+  return article
+}
+data.forEach(newsFeed => {
+  const news = articleMaker(newsFeed)
+  articles.appendChild(news)
+})
+// for(let i = 0; i<data.length; i++){
+//   let feed = articleMaker(data[i]);
+//   articles.appendChild(feed);
+// }
