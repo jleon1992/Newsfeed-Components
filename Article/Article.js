@@ -148,7 +148,9 @@ function articleMaker(newsDataObj){
   first.textContent = newsDataObj.firstParagraph;
   second.textContent = newsDataObj.secondParagraph;
   third.textContent = newsDataObj.thirdParagraph;
-  button.textContent = 'expand';
+  button.textContent = '⇅';
+  button.style.fontSize = '30px';
+  button.style.color = "blue";
 
   // Listener
   button.addEventListener('click', function(e){
